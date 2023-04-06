@@ -1,0 +1,32 @@
+@isTest (SeeAllData = FALSE)
+public class customLWCTestClass {
+    @testSetup static void methodName() {
+        
+        Account acc = new Account(Name='United Arab Emirates',Website='uae@africa.com');
+	Contact con = new Contact(FirstName='Suraj',Email='suraj@gmail.com');
+
+	
+        insert acc;
+	insert con;
+}
+    
+    @istest static void test_retriveSearchDataResult(){
+        String ObjectName = 'Account';
+        String fieldName = 'id,Name,Website';
+        String value = 'un';
+        List<String> selectedRecId;
+        List<sObject> obj1 = project.retriveSearchData(ObjectName,fieldName,value,selectedRecId);
+        system.debug(obj1);
+       
+    }
+
+   @istest static void test_retriveSearchDataResult(){
+        String ObjectName = 'Contact';
+        String fieldName = 'id,Name,Email';
+        String value = 'su';
+        List<String> selectedRecId;
+        List<sObject> obj2 = project.retriveSearchData(ObjectName,fieldName,value,selectedRecId);
+        system.debug(obj2);
+       
+    }
+}
